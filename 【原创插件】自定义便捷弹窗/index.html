@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/dialog.css" />
+	</head>
+	<body>
+		<button type="button" id="openDialog1">点我打开对话框1</button>
+		<button type="button" id="openDialog2">点我打开对话框2</button>
+
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/dialog.min.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript">
+			$("#openDialog1").dialog({
+				id: "superDialog", //必填,必须和已有id不同
+				title: "我的标题", //对话框的标题 默认值: 我的标题
+				type: 0, //0 对话框有确认按钮和取消按钮 1 对话框只有关闭按钮
+				easyClose: true, // 点击遮罩层也可以关闭窗口,默认值false
+				form: [{
+					description: "用户名",
+					type: "text",
+					name: "username",
+					value: "tom"
+				}, {
+					description: "密码",
+					type: "text",
+					name: "password",
+					value: "123456"
+				}, {
+					description: "姓名",
+					type: "text",
+					name: "name",
+					value: "tom"
+				}, {
+					description: "年龄",
+					type: "text",
+					name: "age",
+					value: "18"
+				}], //form 是填充表单的数据,必填
+				submit: function(data) {
+					//data是表单收集的数据
+					console.log(data);
+
+					//这个可自行删去
+					if (true) {
+						alert("提交成功\n（你自己可以去掉这个alert）");
+						//清空表单数据 传递参数=上述指定的id值
+						clearAllData("superDialog");
+					}
+
+				}
+			})
+
+
+			$("#openDialog2").dialog({
+				id: "dialog", //必填,必须和已有id不同
+				title: "我的对话框", //对话框的标题 默认值: 我的标题
+				type: 1, //0 对话框有确认按钮和取消按钮 1 对话框只有关闭按钮
+				form: [{
+					description: "用户名",
+					type: "text",
+					name: "username",
+					value: "username"
+				}, {
+					description: "密码",
+					type: "text",
+					name: "password",
+					value: "可以设定默认值"
+				}, {
+					description: "姓名",
+					type: "text",
+					name: "name",
+					value: "也可以不设置"
+				}, {
+					description: "年龄",
+					type: "text",
+					name: "age"
+				}] //form 是填充表单的数据,必填
+			})
+		</script>
+
+	</body>
+</html>
